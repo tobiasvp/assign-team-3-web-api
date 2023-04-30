@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,17 +22,27 @@ Route::get('/', function () {
 Auth::routes();
 
 
-Route::middleware(['auth', 'user-access:buyer'])->group(function () {
+Route::middleware(['auth', 'user-access:user'])->group(function () {
   
-    // Route::get('/home', [HomeController::class, 'index'])->name('home');
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
 });
-
-
-
+  
+/*------------------------------------------
+--------------------------------------------
+All Admin Routes List
+--------------------------------------------
+--------------------------------------------*/
 Route::middleware(['auth', 'user-access:staff'])->group(function () {
   
     Route::get('/staff/home', [HomeController::class, 'staffHome'])->name('staff.home');
 });
   
+/*------------------------------------------
+--------------------------------------------
+All Admin Routes List
+--------------------------------------------
+--------------------------------------------*/
+Route::middleware(['auth', 'user-access:admin'])->group(function () {
+  
+    Route::get('/admin/home', [HomeController::class, 'adminHome'])->name('admin.home');
+});

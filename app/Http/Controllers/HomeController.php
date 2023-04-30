@@ -37,8 +37,8 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function managerHome()
+    public function staffHome()
     {
-        return view('managerHome');
+        return view('staffHome');
     }
 }

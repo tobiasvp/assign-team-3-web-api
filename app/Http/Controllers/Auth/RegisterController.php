@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
 use App\Models\User;
-use Illuminate\Foundation\Auth\RegistersUsers;
+// use App\Providers\RouteServiceProvider;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Foundation\Auth\RegistersUsers;
 
 class RegisterController extends Controller
 {
@@ -23,13 +24,31 @@ class RegisterController extends Controller
     */
 
     use RegistersUsers;
+    // use Auth;
 
     /**
      * Where to redirect users after registration.
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    // protected $redirectTo = RouteServiceProvider::HOME;
+
+
+
+    // protected $redirectTo = '/home';
+    // protected function redirectTo()
+    // {
+    //     $user = Auth::user();
+    //     if ($user->type == 1) {
+    //         // return '/home';
+    //         return '/staff/home';
+    //     } else  if ($user->type == 2) {
+    //         return '/admin/home';
+    //     } else {
+    //         return '/home';
+    //     }
+    // }
+
 
     /**
      * Create a new controller instance.
@@ -53,6 +72,8 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'type' => ['required', 'integer'],
+            'jk' => ['required', 'integer'],
         ]);
     }
 
@@ -67,7 +88,13 @@ class RegisterController extends Controller
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            // 'tempat_tl' => $data['tempat_tl'],
+            'jk' => $data['jk'],
+            // 'tempat_tl' => $data['tempat_tl'],
             'password' => Hash::make($data['password']),
+            'type' => $data['type'],
         ]);
+
+        return redirect()->route('admin.home');
     }
 }
