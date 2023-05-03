@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -26,10 +27,15 @@ class HomeController extends Controller
         return view('home');
     }
 
-    
+
     public function adminHome()
     {
-        return view('adminHome');
+
+        $products = Product::latest()->paginate(5);
+        // dd($products);
+        // die();
+        return view('adminHome', compact('products'))
+            ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
     /**
