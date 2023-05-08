@@ -133,12 +133,21 @@ class ProductStaffController extends Controller
     public function destroy(Product $product)
     {
         //
-        dd($product);
-        die();
+        // dd                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 ($product);
+        // die();
         $product->delete();
-        // return redirect()->route('products-management.index')
-        //     ->with('success', 'Product deleted successfully');
+        return redirect()->route('products.index')
+            ->with('success', 'Product deleted successfully');
     }
 
-   
+
+    public function destroyStaff(Product $product)
+    {
+        //
+        // dd                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 ($product);
+        // die();
+        $product->delete();
+        return redirect()->route('products-managements.index')
+            ->with('success', 'Product deleted successfully');
+    }
 }

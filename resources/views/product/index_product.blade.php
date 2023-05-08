@@ -78,9 +78,7 @@
 
 
 
-                                {{-- @if (request()->routeIs('products-management.index')) --}}
-                                   
-
+                                @if (request()->routeIs('products-management.index'))
                                     <td>
                                         <form action="{{ route('products-management.destroy', $product->id) }}"
                                             method="POST">
@@ -94,9 +92,21 @@
                                             <button type="submit" class="btn btn-danger">Delete</button>
                                         </form>
                                     </td>
-                                {{-- @else
-                                   
-                                @endif --}}
+                                @else
+                                    <td>
+                                        <form action="{{ route('products.destroy', $product->id) }}"
+                                            method="POST">
+                                            {{-- <a class="btn btn-info" href="{{ route('products.show', $product->id) }}">Show</a> --}}
+                                            <a class="btn btn-primary"
+                                                href="{{ route('products.edit', $product->id) }}">Edit</a>
+                                            admin
+
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                        </form>
+                                    </td>
+                                @endif
 
                             </tr>
                         @endforeach

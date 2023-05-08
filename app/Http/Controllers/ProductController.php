@@ -19,13 +19,7 @@ class ProductController extends Controller
     }
 
 
-    // public function indexStaff()
-    // {
-    //     //
-    //     $products = Product::latest()->paginate();
-    //     return view('product.index_product', compact('products'))
-    //         ->with('i', (request()->input('page', 1) - 1) * 5);
-    // }
+
 
     public function GetStaffProduct()
     {
