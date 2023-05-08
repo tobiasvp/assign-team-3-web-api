@@ -14,9 +14,27 @@ class ProductController extends Controller
     {
         //
         $products = Product::latest()->paginate();
-        return view('adminHome', compact('products'))
+        return view('product.index_product', compact('products'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
+
+
+    // public function indexStaff()
+    // {
+    //     //
+    //     $products = Product::latest()->paginate();
+    //     return view('product.index_product', compact('products'))
+    //         ->with('i', (request()->input('page', 1) - 1) * 5);
+    // }
+
+    public function GetStaffProduct()
+    {
+        //
+        $products = Product::latest()->paginate();
+        return view('product.index_product', compact('products'))
+            ->with('i', (request()->input('page', 1) - 1) * 5);
+    }
+
 
     /**
      * Show the form for creating a new resource.
@@ -134,4 +152,6 @@ class ProductController extends Controller
         return redirect()->route('products.index')
             ->with('success', 'Product deleted successfully');
     }
+
+   
 }

@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('tempat_tl')->nullable();
+            $table->integer('jenis_kelamin')->nullable();
             $table->string('alamat')->nullable();
             $table->string('foto_ktp')->nullable();
             $table->string('email')->unique();

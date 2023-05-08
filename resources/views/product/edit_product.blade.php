@@ -95,7 +95,6 @@
                                 </div>
 
 
-
                                 <div class="col-xs-12 col-sm-12 col-md-12">
                                     <div class="form-group">
                                         <strong>Harga Jual:</strong>
@@ -107,15 +106,12 @@
                                     </div>
                                 </div>
 
-
                                 <div class="col-xs-12 col-sm-12 col-md-12">
                                     <div class="form-group">
                                         <strong>Image Barang:</strong>
                                         <input type="file" name="image" class="form-control"
                                             placeholder="Image Barang">
-                                        {{-- <input type="text" name="harga_jual"
-                                            placeholder="Harga Jual"> --}}
-
+                                 
                                         <img style="height: 100px; width: 150px;"
                                             src="{{ Storage::url($product->image) }}   ">
                                         @error('image')
@@ -123,8 +119,6 @@
                                         @enderror
                                     </div>
                                 </div>
-
-
 
                                 <div class="col-xs-12 col-sm-12 col-md-12">
                                     <br>

@@ -98,8 +98,7 @@
                                     <div class="form-group">
                                         <strong>Image Barang:</strong>
                                         <input type="file" name="image" class="form-control" placeholder="Image Barang">
-                                        {{-- <input type="text" name="harga_jual"
-                                            placeholder="Harga Jual"> --}}
+                                        
                                         @error('image')
                                             <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                                         @enderror
